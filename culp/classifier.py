@@ -1,6 +1,8 @@
 import numpy
+
 from culp import link_predictors
-from culp import leg
+from culp.leg import Leg
+from culp.similarity_strategies import KNNSimilarityEdgesStrategy
 
 
 def culp(train, labels, test, link_predictor, similarity, k, n_jobs=1):
@@ -26,7 +28,8 @@ def culp(train, labels, test, link_predictor, similarity, k, n_jobs=1):
     c = classes.shape[0]
     n, d = train.shape
     m, _ = test.shape
-    G = leg.create_leg(train, labels, test, c, similarity, k, n_jobs)
+    similarity_edges_strategy = KNNSimilarityEdgesStrategy(train, test, similarity, k, n_jobs)
+    leg = Leg(n, m, c, labels, similarity_edges_strategy)
     predictor = {
         'AA': link_predictors.adamic_adar,
         'CN': link_predictors.common_neighbors,
@@ -34,5 +37,5 @@ def culp(train, labels, test, link_predictor, similarity, k, n_jobs=1):
         'CS': link_predictors.compatibility_score,
     }[link_predictor]
     test_indices, class_indices = (n, n + m), (n + m, n + m + c)
-    prediction = predictor(G, test_indices, class_indices)
+    prediction = predictor(leg, test_indices, class_indices)
     return prediction
