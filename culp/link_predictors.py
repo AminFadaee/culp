@@ -5,7 +5,7 @@ from .abstracts import ClassScoresStrategy
 
 class CommonNeighborsStrategy(ClassScoresStrategy):
     def compute_class_scores(self):
-        similarities = numpy.zeros((self.leg.n, self.leg.c), dtype=float)
+        similarities = numpy.zeros((self.leg.m, self.leg.c), dtype=float)
         for class_index, j in enumerate(self.class_indices):
             for test_index, i in enumerate(self.test_indices):
                 similarities[test_index, class_index] = self.leg.count_common_neighbors(i, j)
@@ -14,7 +14,7 @@ class CommonNeighborsStrategy(ClassScoresStrategy):
 
 class AdamicAdarStrategyStrategy(ClassScoresStrategy):
     def compute_class_scores(self):
-        similarities = numpy.zeros((self.leg.n, self.leg.c), dtype=float)
+        similarities = numpy.zeros((self.leg.m, self.leg.c), dtype=float)
         for class_index, j in enumerate(self.class_indices):
             for test_index, i in enumerate(self.test_indices):
                 for n in self.leg.common_neighbors(i, j):
@@ -24,7 +24,7 @@ class AdamicAdarStrategyStrategy(ClassScoresStrategy):
 
 class ResourceAllocationIndexStrategy(ClassScoresStrategy):
     def compute_class_scores(self):
-        similarities = numpy.zeros((self.leg.n, self.leg.c), dtype=float)
+        similarities = numpy.zeros((self.leg.m, self.leg.c), dtype=float)
         for class_index, j in enumerate(self.class_indices):
             for test_index, i in enumerate(self.test_indices):
                 for n in self.leg.common_neighbors(i, j):
@@ -34,7 +34,7 @@ class ResourceAllocationIndexStrategy(ClassScoresStrategy):
 
 class CompatibilityScoreStrategy(ClassScoresStrategy):
     def compute_class_scores(self):
-        similarities = numpy.zeros((self.leg.n, self.leg.c), dtype=float)
+        similarities = numpy.zeros((self.leg.m, self.leg.c), dtype=float)
         for class_index, j in enumerate(self.class_indices):
             for test_index, i in enumerate(self.test_indices):
                 for n in self.leg.common_neighbors(i, j):
