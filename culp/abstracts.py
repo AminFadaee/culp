@@ -1,6 +1,6 @@
 from abc import abstractmethod, ABC
 
-from culp.leg import Leg
+from .leg import Leg
 
 
 class SimilarityEdgesStrategy(ABC):

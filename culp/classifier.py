@@ -1,8 +1,8 @@
 import numpy
 
-from culp.abstracts import ClassScoresStrategy, SimilarityEdgesStrategy
-from culp.leg import Leg
-from culp.similarity_strategies import KNNSimilarityEdgesStrategy, VectorSimilarityMetric
+from .abstracts import ClassScoresStrategy, SimilarityEdgesStrategy
+from .leg import Leg
+from .similarity_strategies import KNNSimilarityEdgesStrategy, VectorSimilarityMetric
 
 
 class CULP:

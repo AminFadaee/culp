@@ -3,7 +3,7 @@ from enum import Enum
 import numpy
 from sklearn.neighbors import NearestNeighbors
 
-from culp.abstracts import SimilarityEdgesStrategy
+from .abstracts import SimilarityEdgesStrategy
 
 
 class VectorSimilarityMetric(Enum):
