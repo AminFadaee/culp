@@ -1,6 +1,6 @@
 import numpy
 
-from culp.abstracts import ClassScoresStrategy
+from .abstracts import ClassScoresStrategy
 
 
 class CommonNeighborsStrategy(ClassScoresStrategy):
