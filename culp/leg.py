@@ -1,10 +1,12 @@
 import networkx as nx
 
-from culp.abstracts import SimilarityEdgesStrategy
-
 
 class Leg:
-    def __init__(self, n, m, c, labels, similarity_edges_strategy: SimilarityEdgesStrategy):
+    n: int  # number of training instances
+    m: int  # number of testing instance
+    c: int  # number of classes
+
+    def __init__(self, n, m, c, labels, similarity_edges_strategy):
         self.n = n
         self.m = m
         self.c = c
